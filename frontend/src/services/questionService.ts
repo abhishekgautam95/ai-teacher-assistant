@@ -5,7 +5,15 @@ export interface QuestionPaperData {
   class: number;
   subject: string;
   chapter: string;
-  difficulty: string;
+  difficulty?: string;
+  language?: string;
+}
+
+export interface NotesData {
+  board: string;
+  class: number;
+  subject: string;
+  chapter: string;
   language?: string;
 }
 
@@ -39,7 +47,7 @@ export const questionService = {
 };
 
 export const notesService = {
-  generateNotes: async (data: QuestionPaperData) => {
+  generateNotes: async (data: NotesData) => {
     const response = await api.post('/api/notes', data);
     return response.data;
   },
